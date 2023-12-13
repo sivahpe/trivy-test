@@ -32,5 +32,5 @@ jobs:
         severity: 'LOW,MEDIUM'
         format: 'table'
         ignore-unfixed: true
-        exit-code: 0
+        exit-code: 1
         output: 'low-medium-fs.log'
