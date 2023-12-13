@@ -1,0 +1,36 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+permissions:
+  actions: read   # permission to read other github actions
+  contents: write # contents needed for compliance
+  id-token: write # id-token needed for hpe-hcss/github-oidc-app which authenticates the runner to AWS ECR
+  packages: read  # packages needed to read the build container
+  pull-requests: write  # needed for compliance
+
+concurrency:
+  # Only allows one build per workflow & branch/PR/tag
+  # cancels in-progress builds for that branch/PR/tag if a new one is submitted.
+  # https://docs.github.com/en/actions/using-jobs/using-concurrency
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  trivy-fs-scan:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Trivy Image Scan
+      uses: aquasecurity/trivy-action@91713af97dc80187565512baba96e4364e983601
+      with:
+        scan-type: 'fs'
+        scan-ref: '.'
+        severity: 'LOW,MEDIUM'
+        format: 'table'
+        ignore-unfixed: true
+        exit-code: 0
+        output: 'low-medium-fs.log'
