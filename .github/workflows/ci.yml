@@ -34,3 +34,7 @@ jobs:
         ignore-unfixed: true
         exit-code: 1
         output: 'low-medium-fs.log'
+    - name: get whitelist, low and medium count
+      id: trivy-scan-count
+      shell: bash
+      run: "${{github.action_path}}/vuln-count.sh"
