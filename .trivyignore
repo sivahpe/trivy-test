@@ -1,0 +1,2 @@
+# Ignore one of the medium vuln errors in med-vuln image
+CVE-2019-11358
