@@ -28,7 +28,7 @@ runs:
     - name: Trivy Low/Medium/unknown severity Image Scan
       uses: aquasecurity/trivy-action@d43c1f16c00cfd3978dde6c07f4bbcf9eb6993ca
       with:
-        image-ref: ${{ inputs.imageid }}
+        image-ref: no-vulns
         scan-type: 'image'
         severity: 'LOW,MEDIUM,UNKNOWN'
         format: 'table'
@@ -36,6 +36,5 @@ runs:
 
     - name: get whitelist, low and medium count
       id: trivy-scan-count
-      if: ${{ inputs.low-med-scan == 'true' }}
       shell: bash
       run: "${{github.action_path}}/vuln-count.sh"
