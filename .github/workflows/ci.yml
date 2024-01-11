@@ -67,10 +67,7 @@ jobs:
             echo Scan expected to fail but did not!
             exit 1
           fi
-          if (( ${{ steps.trivy.outputs.vulnerability_count_unknown }} < 3 || -z "${{ steps.trivy.outputs.vulnerability_count_unknown}}" ]]; then
-            echo vuln count unknown is less than 3: ${{ steps.trivy.outputs.vulnerability_count_unknown }}
-            exit 1
-          fi
+
   test-trivy-action-medium-vulns:
     name: Test Trivy Action medium-vulns
     runs-on: ubuntu-latest
@@ -95,6 +92,10 @@ jobs:
           fi
           if (( ${{ steps.trivy.outputs.vulnerability_count_medium }} < 3 )) || [[ -z "${{ steps.trivy.outputs.vulnerability_count_medium }}" ]]; then
             echo vuln count medium is less than 3: ${{ steps.trivy.outputs.vulnerability_count_medium }}
+            exit 1
+          fi
+          if (( ${{ steps.trivy.outputs.vulnerability_count_unknown }} > 1 || -z "${{ steps.trivy.outputs.vulnerability_count_unknown}}" ]]; then
+            echo vuln count unknown is less than 3: ${{ steps.trivy.outputs.vulnerability_count_unknown }}
             exit 1
           fi
           if [[ "${{ steps.trivy.outputs.vulnerability_count_ignored }}" != "1"  || -z "${{ steps.trivy.outputs.vulnerability_count_ignored }}"  ]]; then
