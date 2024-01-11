@@ -1,11 +1,16 @@
-# Use the official Nginx base image
-FROM nginx:latest as no-vulns
+# (C) Copyright 2023 Hewlett Packard Enterprise Development LP
 
-# Copy a custom HTML file to the default Nginx web root
-# COPY index.html /usr/share/nginx/html/
+FROM gcr.io/distroless/static-debian12:nonroot as no-vulns
 
-# Expose port 80 for web traffic
-EXPOSE 80
+FROM scratch as unsupported-os
 
-# CMD is not necessary for the image to function, but it's here for illustration
-CMD ["nginx", "-g", "daemon off;"]
+# Needs a file
+COPY --from=no-vulns /etc/host.conf /host.conf
+
+FROM appsecco/dsvw@sha256:f5d2da93ea8859b89c8d36e8c0cda936b9238854f3c06c44d1585ae0ffd205cf as vulns
+
+FROM scratch as medium-vulns
+
+# This is just a node module with jquery@3.2.1 added, got from
+# https://github.com/aquasecurity/trivy/blob/main/integration/testdata/yarn.json.golden
+ADD med-vuln.tar /
