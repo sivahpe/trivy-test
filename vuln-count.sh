@@ -1,5 +1,5 @@
 #!/bin/bash
-# (C) Copyright 2023 Hewlett Packard Enterprise Development LP
+# (C) Copyright 2023-2024 Hewlett Packard Enterprise Development LP
 
 set -o pipefail -o errexit -o nounset
 
@@ -12,6 +12,7 @@ fi
 
 grep -Eo 'LOW: [0-9]+' low-medium-fs.log low-medium-image.log | awk -F ': ' '{low+=$2} END {print "vulnerability_count_low="low}' >> "$GITHUB_OUTPUT"
 grep -Eo 'MEDIUM: [0-9]+' low-medium-fs.log low-medium-image.log | awk -F ': ' '{medium+=$2} END {print "vulnerability_count_medium="medium}' >> "$GITHUB_OUTPUT"
+grep -Eo 'UNKNOWN: [0-9]+' low-medium-fs.log low-medium-image.log | awk -F ': ' '{unknown+=$2} END {print "vulnerability_count_unknown="unknown}' >> "$GITHUB_OUTPUT"
 if [[ -f .trivyignore ]]; then
     echo "vulnerability_count_ignored=$(grep -c '^\s*CVE' .trivyignore)" >> "$GITHUB_OUTPUT"
 else
