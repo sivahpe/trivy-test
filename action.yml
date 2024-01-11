@@ -1,6 +1,15 @@
 name: Trivy Scan
 description: Action to scan an image for vulnerabilities
 
+inputs:
+  imageid:
+    required: true
+    description: Image ID of docker image to scan (imageid output from docker/build-push-action)
+  low-med-scan:
+    description: 'scan for low and medium vulnerabilities'
+    required: false
+    default: 'false'
+
 outputs:
   vulnerability_count_low:
     description: number of low vulnerabilities found during trivy scan
@@ -26,9 +35,10 @@ runs:
   using: "composite"
   steps:
     - name: Trivy Low/Medium/unknown severity Image Scan
+      if: ${{ inputs.low-med-scan == 'true' }}
       uses: aquasecurity/trivy-action@d43c1f16c00cfd3978dde6c07f4bbcf9eb6993ca
       with:
-        image-ref: no-vulns
+        image-ref: ${{ inputs.imageid }}
         scan-type: 'image'
         severity: 'LOW,MEDIUM,UNKNOWN'
         format: 'table'
