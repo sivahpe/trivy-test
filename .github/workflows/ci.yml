@@ -1,44 +1,30 @@
-name: CI
-
+name: build
 on:
-  pull_request:
   push:
     branches:
       - main
-
-permissions:
-  actions: read   # permission to read other github actions
-  contents: write # contents needed for compliance
-  id-token: write # id-token needed for hpe-hcss/github-oidc-app which authenticates the runner to AWS ECR
-  packages: read  # packages needed to read the build container
-  pull-requests: write  # needed for compliance
-
-concurrency:
-  # Only allows one build per workflow & branch/PR/tag
-  # cancels in-progress builds for that branch/PR/tag if a new one is submitted.
-  # https://docs.github.com/en/actions/using-jobs/using-concurrency
-  group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
-
+  pull_request:
 jobs:
-  trivy-fs-scan:
-    runs-on: ubuntu-latest
+  build:
+    name: Build
+    runs-on: ubuntu-20.04
     steps:
-    - name: Checkout Code
-      uses: actions/checkout@v3
-      with:
-        # we need to fetch all tags to ensure that we can properly use tag-manage.
-        fetch-depth: 0
-    - name: Build image
-      run: docker build --target no-vulns --tag no-vulns .
-    - name: Trivy Image Scan
-      uses: aquasecurity/trivy-action@91713af97dc80187565512baba96e4364e983601
-      with:
-        scan-type: 'fs'
-        scan-ref: '.'
-        severity: 'LOW,MEDIUM,UNKNOWN'
-        format: 'table'
-        ignore-unfixed: true
-        exit-code: 1
-        output: 'low-medium-fs.log'
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Build an image from Dockerfile
+        run: |
+          docker build -t docker.io/my-organization/my-app:${{ github.sha }} .
+
+      - name: Run Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: 'docker.io/my-organization/my-app:${{ github.sha }}'
+          format: 'sarif'
+          output: 'trivy-results.sarif'
+
+      - name: Upload Trivy scan results to GitHub Security tab
+        uses: github/codeql-action/upload-sarif@v2
+        with:
+          sarif_file: 'trivy-results.sarif'
 
