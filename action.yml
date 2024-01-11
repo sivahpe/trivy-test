@@ -39,7 +39,7 @@ runs:
       shell: bash
       run: |
         set -o pipefail -o errexit -o nounset
-        if [[ ! -s low-medium-fs.log && ! -s low-medium-image.log ]]; then
+        if [[ ! -s low-medium-image.log ]]; then
             echo "ERROR: Both output files from trivy were zero bytes. This generally happens if trivy"
             echo "encounters an unhandled error such as an unsupported OS. Exiting with an error."
             echo "unsupported_os=1" >> "$GITHUB_OUTPUT"
