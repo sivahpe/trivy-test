@@ -1,0 +1,41 @@
+name: Trivy Scan
+description: Action to scan an image for vulnerabilities
+
+outputs:
+  vulnerability_count_low:
+    description: number of low vulnerabilities found during trivy scan
+    value: ${{ steps.trivy-scan-count.outputs.vulnerability_count_low }}
+
+  vulnerability_count_medium:
+    description: number of medium vulnerabilites found during trivy scan
+    value: ${{ steps.trivy-scan-count.outputs.vulnerability_count_medium }}
+
+  vulnerability_count_unknown:
+    description: number of unknown vulnerabilites found during trivy scan
+    value: ${{ steps.trivy-scan-count.outputs.vulnerability_count_unknown }}
+
+  vulnerability_count_ignored:
+    description: number of vulnerabilities ignored during trivy scan
+    value: ${{ steps.trivy-scan-count.outputs.vulnerability_count_ignored }}
+
+
+
+
+
+runs:
+  using: "composite"
+  steps:
+    - name: Trivy Low/Medium/unknown severity Image Scan
+      uses: aquasecurity/trivy-action@d43c1f16c00cfd3978dde6c07f4bbcf9eb6993ca
+      with:
+        image-ref: ${{ inputs.imageid }}
+        scan-type: 'image'
+        severity: 'LOW,MEDIUM,UNKNOWN'
+        format: 'table'
+        output: 'low-medium-image.log'
+
+    - name: get whitelist, low and medium count
+      id: trivy-scan-count
+      if: ${{ inputs.low-med-scan == 'true' }}
+      shell: bash
+      run: "${{github.action_path}}/vuln-count.sh"
