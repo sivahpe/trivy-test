@@ -34,6 +34,38 @@ outputs:
 runs:
   using: "composite"
   steps:
+    using: "composite"
+  steps:
+    - name: Trivy FS Scan
+      uses: aquasecurity/trivy-action@d43c1f16c00cfd3978dde6c07f4bbcf9eb6993ca
+      with:
+        scan-type: 'fs'
+        scan-ref: '.'
+        severity: 'CRITICAL,HIGH'
+        format: 'table'
+        ignore-unfixed: true
+        exit-code: 1
+
+    - name: Trivy Image Scan
+      uses: aquasecurity/trivy-action@d43c1f16c00cfd3978dde6c07f4bbcf9eb6993ca
+      with:
+        image-ref: ${{ inputs.imageid }}
+        scan-type: 'image'
+        exit-code: 1
+        severity: 'CRITICAL,HIGH'
+        format: 'table'
+
+    # set the input low-med-scan to true in docker-build action to run the below steps
+    - name: Trivy Low/Medium severity File system Scan
+      uses: aquasecurity/trivy-action@d43c1f16c00cfd3978dde6c07f4bbcf9eb6993ca
+      with:
+        scan-type: 'fs'
+        scan-ref: '.'
+        severity: 'LOW,MEDIUM'
+        format: 'table'
+        ignore-unfixed: true
+        exit-code: 0
+        output: 'low-medium-fs.log'
     - name: Trivy Low/Medium/unknown severity Image Scan
       if: ${{ inputs.low-med-scan == 'true' }}
       uses: aquasecurity/trivy-action@d43c1f16c00cfd3978dde6c07f4bbcf9eb6993ca
