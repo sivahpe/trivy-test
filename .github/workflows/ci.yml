@@ -90,11 +90,11 @@ jobs:
             echo vuln count low != 0: ${{ steps.trivy.outputs.vulnerability_count_low }}
             exit 1
           fi
-          if (( ${{ steps.trivy.outputs.vulnerability_count_medium }} < 3 )) || [[ -z "${{ steps.trivy.outputs.vulnerability_count_medium }}" ]]; then
+          if [[ ${{ steps.trivy.outputs.vulnerability_count_medium }} < 3  ||  -z "${{ steps.trivy.outputs.vulnerability_count_medium }}" ]]; then
             echo vuln count medium is less than 3: ${{ steps.trivy.outputs.vulnerability_count_medium }}
             exit 1
           fi
-          if (( ${{ steps.trivy.outputs.vulnerability_count_unknown }} > 1)) || -z "${{ steps.trivy.outputs.vulnerability_count_unknown}}" ]]; then
+          if [[ ${{ steps.trivy.outputs.vulnerability_count_unknown }} > 1 || -z "${{ steps.trivy.outputs.vulnerability_count_unknown}}" ]]; then
             echo vuln count unknown is less than 3: ${{ steps.trivy.outputs.vulnerability_count_unknown }}
             exit 1
           fi
