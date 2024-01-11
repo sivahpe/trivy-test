@@ -34,8 +34,6 @@ outputs:
 runs:
   using: "composite"
   steps:
-    using: "composite"
-  steps:
     - name: Trivy FS Scan
       uses: aquasecurity/trivy-action@d43c1f16c00cfd3978dde6c07f4bbcf9eb6993ca
       with:
