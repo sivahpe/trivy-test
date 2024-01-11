@@ -24,7 +24,7 @@ jobs:
         uses: ./
         continue-on-error: true
         with:
-          imageid: vulns
+          imageid: no-vulns
           low-med-scan: true
       - name: Tests
         run: |
