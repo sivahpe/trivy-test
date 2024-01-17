@@ -23,7 +23,7 @@ jobs:
         id: trivy
         uses: ./
         with:
-          imageid: no-vulns
+          imageid: nginx:latest
           low-med-scan: true
           ignore_unfixed: false
           fail_on_low_medium: true
@@ -60,7 +60,7 @@ jobs:
         uses: ./
         continue-on-error: true
         with:
-          imageid: vulns
+          imageid: nginx:latest
           low-med-scan: true
           ignore_unfixed: false
           fail_on_low_medium: true
@@ -84,7 +84,7 @@ jobs:
         id: trivy
         uses: ./
         with:
-          imageid: medium-vulns
+          imageid: nginx:latest
           low-med-scan: true
           ignore_unfixed: false
           fail_on_low_medium: true
@@ -122,7 +122,7 @@ jobs:
         uses: ./
         continue-on-error: true
         with:
-          imageid: unsupported-os
+          imageid: nginx:latest
           low-med-scan: true
           ignore_unfixed: false
           fail_on_low_medium: true
