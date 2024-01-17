@@ -62,8 +62,8 @@ jobs:
         with:
           imageid: nginx:latest
           low-med-scan: true
-          ignore_unfixed: false
-          fail_on_low_medium: true
+          ignore_unfixed: true
+          fail_on_low_medium: false
       - name: Tests
         run: |
           if [[ ${{ steps.trivy.outcome }} != failure ]]; then
@@ -86,8 +86,8 @@ jobs:
         with:
           imageid: nginx:latest
           low-med-scan: true
-          ignore_unfixed: false
-          fail_on_low_medium: true
+          ignore_unfixed: true
+          fail_on_low_medium: false
       - name: Tests
         run: |
           set -x
@@ -120,12 +120,12 @@ jobs:
       - name: Trivy Scan
         id: trivy
         uses: ./
-        # continue-on-error: true
+        continue-on-error: true
         with:
           imageid: nginx:latest
           low-med-scan: true
-          ignore_unfixed: false
-          fail_on_low_medium: true
+          ignore_unfixed: true
+          fail_on_low_medium: false
       - name: Tests
         run: |
           if [[ ${{ steps.trivy.outcome }} != failure ]]; then
