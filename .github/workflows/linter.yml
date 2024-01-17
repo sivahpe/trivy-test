@@ -15,7 +15,7 @@ jobs:
         with:
           fetch-depth: 0
       - name: Lint Code
-        uses: github/super-linter/slim@454ba4482ce2cd0c505bc592e83c06e1e37ade61
+        uses: github/super-linter/slim@45fc0d88288beee4701c62761281edfee85655d7
         env:
           # true for entire repo, false for only new/modified files
           VALIDATE_ALL_CODEBASE: true
