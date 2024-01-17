@@ -67,25 +67,25 @@ description: Action to scan an image for vulnerabilities
 runs:
   using: "composite"
   steps:
-    - name: Trivy FS Scan
-      # if: ${{ inputs.skip-fs-scan == 'false' }}
-      uses: aquasecurity/trivy-action@d43c1f16c00cfd3978dde6c07f4bbcf9eb6993ca
-      with:
-        scan-type: 'fs'
-        scan-ref: '.'
-        severity: 'CRITICAL,HIGH'
-        format: 'table'
-        ignore-unfixed: false
-        exit-code: '1'
-        # ignore-policy: ${{ inputs.ignore_policy }}
-        # trivyignores: ${{ inputs.trivyignores }}
-        # skip-dirs: ${{ inputs.skip-dirs }}
-        # skip-files: ${{ inputs.skip-files }}
+    # - name: Trivy FS Scan
+    #   # if: ${{ inputs.skip-fs-scan == 'false' }}
+    #   uses: aquasecurity/trivy-action@d43c1f16c00cfd3978dde6c07f4bbcf9eb6993ca
+    #   with:
+    #     scan-type: 'fs'
+    #     scan-ref: '.'
+    #     severity: 'CRITICAL,HIGH'
+    #     format: 'table'
+    #     ignore-unfixed: false
+    #     exit-code: '1'
+    #     # ignore-policy: ${{ inputs.ignore_policy }}
+    #     # trivyignores: ${{ inputs.trivyignores }}
+    #     # skip-dirs: ${{ inputs.skip-dirs }}
+    #     # skip-files: ${{ inputs.skip-files }}
 
     - name: Trivy Image Scan
       uses: aquasecurity/trivy-action@d43c1f16c00cfd3978dde6c07f4bbcf9eb6993ca
       with:
-        image-ref: nginx:latest
+        image-ref: debian/gnutls28 3.8.2-1
         scan-type: 'image'
         ignore-unfixed: true
         exit-code: '1'
@@ -100,7 +100,7 @@ runs:
       # if: ${{ inputs.low-med-scan == 'true' }}
       uses: aquasecurity/trivy-action@d43c1f16c00cfd3978dde6c07f4bbcf9eb6993ca
       with:
-        image-ref: nginx:latest
+        image-ref: debian/gnutls28 3.8.2-1
         scan-type: 'image'
         ignore-unfixed: true
         exit-code: '1'
@@ -113,21 +113,21 @@ runs:
         output: 'low-medium-image.log'
 
     # set the input low-med-scan to true in docker-build action to run the below steps
-    - name: Trivy Low/Medium/unknown severity File system Scan
-      # if: ${{ inputs.skip-fs-scan == 'false' }} && ${{ inputs.low-med-scan == 'true' }}
-      uses: aquasecurity/trivy-action@d43c1f16c00cfd3978dde6c07f4bbcf9eb6993ca
-      with:
-        scan-type: 'fs'
-        scan-ref: '.'
-        severity: 'UNKNOWN,LOW,MEDIUM'
-        format: 'table'
-        ignore-unfixed: true
-        exit-code: '0'
-        # ignore-policy: ${{ inputs.ignore_policy }}
-        # trivyignores: ${{ inputs.trivyignores }}
-        # skip-dirs: ${{ inputs.skip-dirs }}
-        # skip-files: ${{ inputs.skip-files }}
-        output: 'low-medium-fs.log'
+    # - name: Trivy Low/Medium/unknown severity File system Scan
+    #   # if: ${{ inputs.skip-fs-scan == 'false' }} && ${{ inputs.low-med-scan == 'true' }}
+    #   uses: aquasecurity/trivy-action@d43c1f16c00cfd3978dde6c07f4bbcf9eb6993ca
+    #   with:
+    #     scan-type: 'fs'
+    #     scan-ref: '.'
+    #     severity: 'UNKNOWN,LOW,MEDIUM'
+    #     format: 'table'
+    #     ignore-unfixed: true
+    #     exit-code: '0'
+    #     # ignore-policy: ${{ inputs.ignore_policy }}
+    #     # trivyignores: ${{ inputs.trivyignores }}
+    #     # skip-dirs: ${{ inputs.skip-dirs }}
+    #     # skip-files: ${{ inputs.skip-files }}
+    #     output: 'low-medium-fs.log'
 
     
 
