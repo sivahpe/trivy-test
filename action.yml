@@ -85,7 +85,7 @@ runs:
     - name: Trivy Image Scan
       uses: aquasecurity/trivy-action@d43c1f16c00cfd3978dde6c07f4bbcf9eb6993ca
       with:
-        image-ref: nginx:latest
+        image-ref: test
         scan-type: 'image'
         ignore-unfixed: true
         exit-code: '1'
@@ -100,7 +100,7 @@ runs:
       # if: ${{ inputs.low-med-scan == 'true' }}
       uses: aquasecurity/trivy-action@d43c1f16c00cfd3978dde6c07f4bbcf9eb6993ca
       with:
-        image-ref: nginx:latest
+        image-ref: test
         scan-type: 'image'
         ignore-unfixed: true
         exit-code: '1'
