@@ -22,11 +22,11 @@ jobs:
       - name: Trivy Scan
         id: trivy
         uses: ./
-        with:
-          imageid: nginx:latest
-          low-med-scan: true
-          ignore_unfixed: false
-          fail_on_low_medium: true
+        # with:
+        #   imageid: nginx:latest
+        #   low-med-scan: true
+        #   ignore_unfixed: false
+        #   fail_on_low_medium: true
   #     - name: Tests
   #       run: |
   #         if [[ -z "${{ steps.trivy.outputs.vulnerability_count_low }}" || "${{ steps.trivy.outputs.vulnerability_count_low }}" != "0" ]]; then
