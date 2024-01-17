@@ -1,0 +1,15 @@
+# (c) Copyright 2022 Hewlett Packard Enterprise Development LP
+
+name: Workflow Dependabot
+
+on:
+  schedule:
+    - cron: '0 18 * * *'
+  pull_request:
+
+jobs:
+  workflow-scanner:
+    if: ${{ github.actor != 'dependabot[bot]' }}
+    uses: hpe-actions/workflow-dependabot/.github/workflows/workflow-scanner.yml@v1
+    secrets:
+      gh_token: ${{ secrets.ACTION_RO_GH_TOKEN }}
