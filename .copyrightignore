@@ -1,3 +1,0 @@
-# This is actually a .tar.gz file but Docker only recognises tar files called .tar
-# and copyright-tool breaks trying to parse it, so just ignore it
-med-vuln.tar
