@@ -4,6 +4,9 @@ name: Test Trivy Action
 
 on:
   pull_request:
+  push:
+   branches:
+     - main
 
 jobs:
   test-trivy-action-no-vulns:
