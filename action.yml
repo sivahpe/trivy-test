@@ -75,7 +75,7 @@ runs:
         scan-ref: '.'
         severity: 'CRITICAL,HIGH'
         format: 'table'
-        ignore-unfixed: true
+        ignore-unfixed: false
         exit-code: '1'
         # ignore-policy: ${{ inputs.ignore_policy }}
         # trivyignores: ${{ inputs.trivyignores }}
