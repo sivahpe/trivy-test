@@ -76,7 +76,7 @@ runs:
         severity: 'CRITICAL,HIGH'
         format: 'table'
         ignore-unfixed: true
-        exit-code: '0'
+        exit-code: '1'
         # ignore-policy: ${{ inputs.ignore_policy }}
         # trivyignores: ${{ inputs.trivyignores }}
         # skip-dirs: ${{ inputs.skip-dirs }}
@@ -88,7 +88,7 @@ runs:
         image-ref: nginx:latest
         scan-type: 'image'
         ignore-unfixed: true
-        exit-code: '0'
+        exit-code: '1'
         severity: 'CRITICAL,HIGH'
         format: 'table'
         # ignore-policy: ${{ inputs.ignore_policy }}
@@ -103,7 +103,7 @@ runs:
         image-ref: nginx:latest
         scan-type: 'image'
         ignore-unfixed: true
-        exit-code: '0'
+        exit-code: '1'
         severity: 'UNKNOWN,LOW,MEDIUM'
         format: 'table'
         # ignore-policy: ${{ inputs.ignore_policy }}
@@ -111,7 +111,7 @@ runs:
         # skip-dirs: ${{ inputs.skip-dirs }}
         # skip-files: ${{ inputs.skip-files }}
         output: 'low-medium-image.log'
-        
+
     # set the input low-med-scan to true in docker-build action to run the below steps
     - name: Trivy Low/Medium/unknown severity File system Scan
       # if: ${{ inputs.skip-fs-scan == 'false' }} && ${{ inputs.low-med-scan == 'true' }}
