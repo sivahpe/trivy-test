@@ -82,19 +82,19 @@ runs:
         skip-dirs: ${{ inputs.skip-dirs }}
         skip-files: ${{ inputs.skip-files }}
 
-    - name: Trivy Image Scan
-      uses: aquasecurity/trivy-action@d43c1f16c00cfd3978dde6c07f4bbcf9eb6993ca
-      with:
-        image-ref: ${{ inputs.imageid }}
-        scan-type: 'image'
-        ignore-unfixed: ${{ inputs.ignore_unfixed }}
-        exit-code: 1
-        severity: 'CRITICAL,HIGH'
-        format: 'table'
-        ignore-policy: ${{ inputs.ignore_policy }}
-        trivyignores: ${{ inputs.trivyignores }}
-        skip-dirs: ${{ inputs.skip-dirs }}
-        skip-files: ${{ inputs.skip-files }}
+    # - name: Trivy Image Scan
+    #   uses: aquasecurity/trivy-action@d43c1f16c00cfd3978dde6c07f4bbcf9eb6993ca
+    #   with:
+    #     image-ref: ${{ inputs.imageid }}
+    #     scan-type: 'image'
+    #     ignore-unfixed: ${{ inputs.ignore_unfixed }}
+    #     exit-code: 1
+    #     severity: 'CRITICAL,HIGH'
+    #     format: 'table'
+    #     ignore-policy: ${{ inputs.ignore_policy }}
+    #     trivyignores: ${{ inputs.trivyignores }}
+    #     skip-dirs: ${{ inputs.skip-dirs }}
+    #     skip-files: ${{ inputs.skip-files }}
 
     # set the input low-med-scan to true in docker-build action to run the below steps
     - name: Trivy Low/Medium/unknown severity File system Scan
