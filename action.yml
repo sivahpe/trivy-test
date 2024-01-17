@@ -95,7 +95,23 @@ runs:
         # trivyignores: ${{ inputs.trivyignores }}
         # skip-dirs: ${{ inputs.skip-dirs }}
         # skip-files: ${{ inputs.skip-files }}
-
+    
+    - name: Trivy Low/Medium/unknown severity Image Scan
+      # if: ${{ inputs.low-med-scan == 'true' }}
+      uses: aquasecurity/trivy-action@d43c1f16c00cfd3978dde6c07f4bbcf9eb6993ca
+      with:
+        image-ref: nginx:latest
+        scan-type: 'image'
+        ignore-unfixed: true
+        exit-code: '0'
+        severity: 'UNKNOWN,LOW,MEDIUM'
+        format: 'table'
+        # ignore-policy: ${{ inputs.ignore_policy }}
+        # trivyignores: ${{ inputs.trivyignores }}
+        # skip-dirs: ${{ inputs.skip-dirs }}
+        # skip-files: ${{ inputs.skip-files }}
+        output: 'low-medium-image.log'
+        
     # set the input low-med-scan to true in docker-build action to run the below steps
     - name: Trivy Low/Medium/unknown severity File system Scan
       # if: ${{ inputs.skip-fs-scan == 'false' }} && ${{ inputs.low-med-scan == 'true' }}
@@ -113,21 +129,7 @@ runs:
         # skip-files: ${{ inputs.skip-files }}
         output: 'low-medium-fs.log'
 
-    - name: Trivy Low/Medium/unknown severity Image Scan
-      # if: ${{ inputs.low-med-scan == 'true' }}
-      uses: aquasecurity/trivy-action@d43c1f16c00cfd3978dde6c07f4bbcf9eb6993ca
-      with:
-        image-ref: nginx:latest
-        scan-type: 'image'
-        ignore-unfixed: true
-        exit-code: '0'
-        severity: 'UNKNOWN,LOW,MEDIUM'
-        format: 'table'
-        # ignore-policy: ${{ inputs.ignore_policy }}
-        # trivyignores: ${{ inputs.trivyignores }}
-        # skip-dirs: ${{ inputs.skip-dirs }}
-        # skip-files: ${{ inputs.skip-files }}
-        output: 'low-medium-image.log'
+    
 
     # - name: get whitelist, low and medium count
     #   id: trivy-scan-count
