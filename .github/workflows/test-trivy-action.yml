@@ -18,7 +18,7 @@ jobs:
         with:
           fetch-depth: 0
       - name: Build Image
-        run: docker build --target no-vulns --tag no-vulns .
+        run: docker build .
       - name: Trivy Scan
         id: trivy
         uses: ./
@@ -54,7 +54,7 @@ jobs:
         with:
           fetch-depth: 0
       - name: Build Image
-        run: docker build --target vulns --tag vulns .
+        run: docker build .
       - name: Trivy Scan
         id: trivy
         uses: ./
@@ -79,7 +79,7 @@ jobs:
         with:
           fetch-depth: 0
       - name: Build Image
-        run: docker build --target medium-vulns --tag medium-vulns .
+        run: docker build .
       - name: Trivy Scan
         id: trivy
         uses: ./
@@ -116,7 +116,7 @@ jobs:
         with:
           fetch-depth: 0
       - name: Build Image
-        run: docker build --target unsupported-os --tag unsupported-os .
+        run: docker build .
       - name: Trivy Scan
         id: trivy
         uses: ./
