@@ -90,6 +90,7 @@ jobs:
           fail_on_low_medium: true
       - name: Tests
         run: |
+          set -x
           if [[ -z "${{ steps.trivy.outputs.vulnerability_count_low }}" || "${{ steps.trivy.outputs.vulnerability_count_low }}" != "0"  ]]; then
             echo vuln count low != 0: ${{ steps.trivy.outputs.vulnerability_count_low }}
             exit 1
