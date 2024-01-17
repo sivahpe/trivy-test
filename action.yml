@@ -103,7 +103,7 @@ runs:
       with:
         scan-type: 'fs'
         scan-ref: '.'
-        severity: 'LOW,MEDIUM,UNKNOWN'
+        severity: 'UNKNOWN,LOW,MEDIUM'
         format: 'table'
         ignore-unfixed: ${{ inputs.ignore_unfixed }}
         exit-code: ${{ inputs.fail_on_low_medium == 'true' && '1' || '0' }}
@@ -121,7 +121,7 @@ runs:
         scan-type: 'image'
         ignore-unfixed: ${{ inputs.ignore_unfixed }}
         exit-code: ${{ inputs.fail_on_low_medium == 'true' && '1' || '0' }}
-        severity: 'LOW,MEDIUM,UNKNOWN'
+        severity: 'UNKNOWN,LOW,MEDIUM'
         format: 'table'
         ignore-policy: ${{ inputs.ignore_policy }}
         trivyignores: ${{ inputs.trivyignores }}
