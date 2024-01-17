@@ -36,11 +36,11 @@ inputs:
     required: false
     type: boolean
     default: true
-  fail_on_low_medium:
-    description: 'fail on low/medium/unknown vulnerabilities '
-    required: false
-    type: boolean
-    default: false
+  # fail_on_low_medium:
+  #   description: 'fail on low/medium/unknown vulnerabilities '
+  #   required: false
+  #   type: boolean
+  #   default: false
 outputs:
   vulnerability_count_low:
     description: number of low vulnerabilities found during trivy scan
@@ -105,8 +105,8 @@ runs:
         scan-ref: '.'
         severity: 'UNKNOWN,LOW,MEDIUM'
         format: 'table'
-        ignore-unfixed: ${{ inputs.ignore_unfixed }}
-        exit-code: ${{ inputs.fail_on_low_medium == 'true' && '1' || '0' }}
+        ignore-unfixed: true
+        exit-code: '1'
         ignore-policy: ${{ inputs.ignore_policy }}
         trivyignores: ${{ inputs.trivyignores }}
         skip-dirs: ${{ inputs.skip-dirs }}
@@ -119,8 +119,8 @@ runs:
       with:
         image-ref: ${{ inputs.imageid }}
         scan-type: 'image'
-        ignore-unfixed: ${{ inputs.ignore_unfixed }}
-        exit-code: ${{ inputs.fail_on_low_medium == 'true' && '1' || '0' }}
+        ignore-unfixed: false
+        exit-code: '1'
         severity: 'UNKNOWN,LOW,MEDIUM'
         format: 'table'
         ignore-policy: ${{ inputs.ignore_policy }}
