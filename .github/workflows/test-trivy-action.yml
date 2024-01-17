@@ -18,7 +18,7 @@ jobs:
         with:
           fetch-depth: 0
       - name: Build Image
-        run: docker build .
+        run: docker build --target my-nginx --tag test .
       - name: Trivy Scan
         id: trivy
         uses: ./
