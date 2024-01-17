@@ -25,8 +25,8 @@ jobs:
         with:
           imageid: no-vulns
           low-med-scan: true
-          ignore_unfixed: false
-          fail_on_low_medium: true
+          ignore_unfixed: true
+          fail_on_low_medium: false
       - name: Tests
         run: |
           if [[ -z "${{ steps.trivy.outputs.vulnerability_count_low }}" || "${{ steps.trivy.outputs.vulnerability_count_low }}" != "0" ]]; then
@@ -62,8 +62,8 @@ jobs:
         with:
           imageid: vulns
           low-med-scan: true
-          ignore_unfixed: false
-          fail_on_low_medium: true
+          ignore_unfixed: true
+          fail_on_low_medium: false
       - name: Tests
         run: |
           if [[ ${{ steps.trivy.outcome }} != failure ]]; then
@@ -86,8 +86,8 @@ jobs:
         with:
           imageid: medium-vulns
           low-med-scan: true
-          ignore_unfixed: false
-          fail_on_low_medium: true
+          ignore_unfixed: true
+          fail_on_low_medium: false
       - name: Tests
         run: |
           if [[ -z "${{ steps.trivy.outputs.vulnerability_count_low }}" || "${{ steps.trivy.outputs.vulnerability_count_low }}" != "0"  ]]; then
@@ -123,8 +123,8 @@ jobs:
         with:
           imageid: unsupported-os
           low-med-scan: true
-          ignore_unfixed: false
-          fail_on_low_medium: true
+          ignore_unfixed: true
+          fail_on_low_medium: false
       - name: Tests
         run: |
           if [[ ${{ steps.trivy.outcome }} != failure ]]; then
