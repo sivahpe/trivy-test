@@ -120,7 +120,7 @@ jobs:
       - name: Trivy Scan
         id: trivy
         uses: ./
-        continue-on-error: true
+        # continue-on-error: true
         with:
           imageid: nginx:latest
           low-med-scan: true
