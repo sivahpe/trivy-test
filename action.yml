@@ -68,7 +68,7 @@ runs:
   using: "composite"
   steps:
     - name: Trivy FS Scan
-      if: ${{ inputs.skip-fs-scan == 'false' }}
+      # if: ${{ inputs.skip-fs-scan == 'false' }}
       uses: aquasecurity/trivy-action@d43c1f16c00cfd3978dde6c07f4bbcf9eb6993ca
       with:
         scan-type: 'fs'
@@ -98,7 +98,7 @@ runs:
 
     # set the input low-med-scan to true in docker-build action to run the below steps
     - name: Trivy Low/Medium/unknown severity File system Scan
-      if: ${{ inputs.skip-fs-scan == 'false' }} && ${{ inputs.low-med-scan == 'true' }}
+      # if: ${{ inputs.skip-fs-scan == 'false' }} && ${{ inputs.low-med-scan == 'true' }}
       uses: aquasecurity/trivy-action@d43c1f16c00cfd3978dde6c07f4bbcf9eb6993ca
       with:
         scan-type: 'fs'
@@ -114,7 +114,7 @@ runs:
         output: 'low-medium-fs.log'
 
     - name: Trivy Low/Medium/unknown severity Image Scan
-      if: ${{ inputs.low-med-scan == 'true' }}
+      # if: ${{ inputs.low-med-scan == 'true' }}
       uses: aquasecurity/trivy-action@d43c1f16c00cfd3978dde6c07f4bbcf9eb6993ca
       with:
         image-ref: nginx:latest
