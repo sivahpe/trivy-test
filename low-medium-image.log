@@ -32,25 +32,8 @@
 |                  |                  |          |                   |               | of arbitrary files in chfn              |
 |                  |                  |          |                   |               | and chsh when compiled...               |
 |                  |                  |          |                   |               | -->avd.aquasec.com/nvd/cve-2022-0563    |
-+------------------+------------------+----------+-------------------+---------------+-----------------------------------------+
-| libc-bin         | CVE-2019-1010022 | CRITICAL | 2.36-9+deb12u3    |               | glibc: stack guard protection bypass    |
-|                  |                  |          |                   |               | -->avd.aquasec.com/nvd/cve-2019-1010022 |
-+                  +------------------+----------+                   +---------------+-----------------------------------------+
-|                  | CVE-2018-20796   | HIGH     |                   |               | glibc: uncontrolled recursion in        |
-|                  |                  |          |                   |               | function check_dst_limits_calc_pos_1    |
-|                  |                  |          |                   |               | in posix/regexec.c                      |
-|                  |                  |          |                   |               | -->avd.aquasec.com/nvd/cve-2018-20796   |
-+                  +------------------+          +                   +---------------+-----------------------------------------+
-|                  | CVE-2019-1010023 |          |                   |               | glibc: running ldd on malicious ELF     |
-|                  |                  |          |                   |               | leads to code execution because of...   |
-|                  |                  |          |                   |               | -->avd.aquasec.com/nvd/cve-2019-1010023 |
-+                  +------------------+          +                   +---------------+-----------------------------------------+
-|                  | CVE-2019-9192    |          |                   |               | glibc: uncontrolled recursion in        |
-|                  |                  |          |                   |               | function check_dst_limits_calc_pos_1    |
-|                  |                  |          |                   |               | in posix/regexec.c                      |
-|                  |                  |          |                   |               | -->avd.aquasec.com/nvd/cve-2019-9192    |
-+                  +------------------+----------+                   +---------------+-----------------------------------------+
-|                  | CVE-2010-4756    | MEDIUM   |                   |               | glibc: glob implementation              |
++------------------+------------------+          +-------------------+---------------+-----------------------------------------+
+| libc-bin         | CVE-2010-4756    |          | 2.36-9+deb12u3    |               | glibc: glob implementation              |
 |                  |                  |          |                   |               | can cause excessive CPU and             |
 |                  |                  |          |                   |               | memory consumption due to...            |
 |                  |                  |          |                   |               | -->avd.aquasec.com/nvd/cve-2010-4756    |
@@ -62,25 +45,8 @@
 |                  | CVE-2019-1010025 |          |                   |               | glibc: information disclosure of heap   |
 |                  |                  |          |                   |               | addresses of pthread_created thread     |
 |                  |                  |          |                   |               | -->avd.aquasec.com/nvd/cve-2019-1010025 |
-+------------------+------------------+----------+                   +---------------+-----------------------------------------+
-| libc6            | CVE-2019-1010022 | CRITICAL |                   |               | glibc: stack guard protection bypass    |
-|                  |                  |          |                   |               | -->avd.aquasec.com/nvd/cve-2019-1010022 |
-+                  +------------------+----------+                   +---------------+-----------------------------------------+
-|                  | CVE-2018-20796   | HIGH     |                   |               | glibc: uncontrolled recursion in        |
-|                  |                  |          |                   |               | function check_dst_limits_calc_pos_1    |
-|                  |                  |          |                   |               | in posix/regexec.c                      |
-|                  |                  |          |                   |               | -->avd.aquasec.com/nvd/cve-2018-20796   |
-+                  +------------------+          +                   +---------------+-----------------------------------------+
-|                  | CVE-2019-1010023 |          |                   |               | glibc: running ldd on malicious ELF     |
-|                  |                  |          |                   |               | leads to code execution because of...   |
-|                  |                  |          |                   |               | -->avd.aquasec.com/nvd/cve-2019-1010023 |
-+                  +------------------+          +                   +---------------+-----------------------------------------+
-|                  | CVE-2019-9192    |          |                   |               | glibc: uncontrolled recursion in        |
-|                  |                  |          |                   |               | function check_dst_limits_calc_pos_1    |
-|                  |                  |          |                   |               | in posix/regexec.c                      |
-|                  |                  |          |                   |               | -->avd.aquasec.com/nvd/cve-2019-9192    |
-+                  +------------------+----------+                   +---------------+-----------------------------------------+
-|                  | CVE-2010-4756    | MEDIUM   |                   |               | glibc: glob implementation              |
++------------------+------------------+          +                   +---------------+-----------------------------------------+
+| libc6            | CVE-2010-4756    |          |                   |               | glibc: glob implementation              |
 |                  |                  |          |                   |               | can cause excessive CPU and             |
 |                  |                  |          |                   |               | memory consumption due to...            |
 |                  |                  |          |                   |               | -->avd.aquasec.com/nvd/cve-2010-4756    |
@@ -97,59 +63,28 @@
 |                  |                  |          |                   |               | in GNU GCC 11.2 allows stack            |
 |                  |                  |          |                   |               | exhaustion in demangle_const            |
 |                  |                  |          |                   |               | -->avd.aquasec.com/nvd/cve-2022-27943   |
-+------------------+------------------+----------+-------------------+---------------+-----------------------------------------+
-| libgcrypt20      | CVE-2018-6829    | HIGH     | 1.10.1-3          |               | libgcrypt: ElGamal implementation       |
-|                  |                  |          |                   |               | doesn't have semantic security due      |
-|                  |                  |          |                   |               | to incorrectly encoded plaintexts...    |
-|                  |                  |          |                   |               | -->avd.aquasec.com/nvd/cve-2018-6829    |
-+------------------+------------------+----------+-------------------+---------------+-----------------------------------------+
-| libgnutls30      | CVE-2011-3389    | MEDIUM   | 3.7.9-2+deb12u1   |               | HTTPS: block-wise chosen-plaintext      |
++------------------+------------------+          +-------------------+---------------+-----------------------------------------+
+| libgnutls30      | CVE-2011-3389    |          | 3.7.9-2+deb12u1   |               | HTTPS: block-wise chosen-plaintext      |
 |                  |                  |          |                   |               | attack against SSL/TLS (BEAST)          |
 |                  |                  |          |                   |               | -->avd.aquasec.com/nvd/cve-2011-3389    |
 +------------------+------------------+----------+-------------------+---------------+-----------------------------------------+
-| libgssapi-krb5-2 | CVE-2018-5709    | HIGH     | 1.20.1-2+deb12u1  |               | krb5: integer overflow                  |
-|                  |                  |          |                   |               | in dbentry->n_key_data                  |
-|                  |                  |          |                   |               | in kadmin/dbutil/dump.c                 |
-|                  |                  |          |                   |               | -->avd.aquasec.com/nvd/cve-2018-5709    |
-+                  +------------------+----------+                   +---------------+-----------------------------------------+
-|                  | CVE-2004-0971    | LOW      |                   |               | security flaw                           |
+| libgssapi-krb5-2 | CVE-2004-0971    | LOW      | 1.20.1-2+deb12u1  |               | security flaw                           |
 |                  |                  |          |                   |               | -->avd.aquasec.com/nvd/cve-2004-0971    |
 +------------------+------------------+----------+-------------------+---------------+-----------------------------------------+
 | libjbig0         | CVE-2017-9937    | MEDIUM   | 2.1-6.1           |               | libtiff: memory malloc failure          |
 |                  |                  |          |                   |               | in tif_jbig.c could cause DOS.          |
 |                  |                  |          |                   |               | -->avd.aquasec.com/nvd/cve-2017-9937    |
 +------------------+------------------+----------+-------------------+---------------+-----------------------------------------+
-| libk5crypto3     | CVE-2018-5709    | HIGH     | 1.20.1-2+deb12u1  |               | krb5: integer overflow                  |
-|                  |                  |          |                   |               | in dbentry->n_key_data                  |
-|                  |                  |          |                   |               | in kadmin/dbutil/dump.c                 |
-|                  |                  |          |                   |               | -->avd.aquasec.com/nvd/cve-2018-5709    |
-+                  +------------------+----------+                   +---------------+-----------------------------------------+
-|                  | CVE-2004-0971    | LOW      |                   |               | security flaw                           |
+| libk5crypto3     | CVE-2004-0971    | LOW      | 1.20.1-2+deb12u1  |               | security flaw                           |
 |                  |                  |          |                   |               | -->avd.aquasec.com/nvd/cve-2004-0971    |
-+------------------+------------------+----------+                   +---------------+-----------------------------------------+
-| libkrb5-3        | CVE-2018-5709    | HIGH     |                   |               | krb5: integer overflow                  |
-|                  |                  |          |                   |               | in dbentry->n_key_data                  |
-|                  |                  |          |                   |               | in kadmin/dbutil/dump.c                 |
-|                  |                  |          |                   |               | -->avd.aquasec.com/nvd/cve-2018-5709    |
-+                  +------------------+----------+                   +---------------+-----------------------------------------+
-|                  | CVE-2004-0971    | LOW      |                   |               | security flaw                           |
-|                  |                  |          |                   |               | -->avd.aquasec.com/nvd/cve-2004-0971    |
-+------------------+------------------+----------+                   +---------------+-----------------------------------------+
-| libkrb5support0  | CVE-2018-5709    | HIGH     |                   |               | krb5: integer overflow                  |
-|                  |                  |          |                   |               | in dbentry->n_key_data                  |
-|                  |                  |          |                   |               | in kadmin/dbutil/dump.c                 |
-|                  |                  |          |                   |               | -->avd.aquasec.com/nvd/cve-2018-5709    |
-+                  +------------------+----------+                   +---------------+-----------------------------------------+
-|                  | CVE-2004-0971    | LOW      |                   |               | security flaw                           |
-|                  |                  |          |                   |               | -->avd.aquasec.com/nvd/cve-2004-0971    |
++------------------+                  +          +                   +---------------+                                         +
+| libkrb5-3        |                  |          |                   |               |                                         |
+|                  |                  |          |                   |               |                                         |
++------------------+                  +          +                   +---------------+                                         +
+| libkrb5support0  |                  |          |                   |               |                                         |
+|                  |                  |          |                   |               |                                         |
 +------------------+------------------+----------+-------------------+---------------+-----------------------------------------+
-| libldap-2.5-0    | CVE-2017-17740   | HIGH     | 2.5.13+dfsg-5     |               | openldap:                               |
-|                  |                  |          |                   |               | contrib/slapd-modules/nops/nops.c       |
-|                  |                  |          |                   |               | attempts to free stack buffer           |
-|                  |                  |          |                   |               | allowing remote attackers to cause...   |
-|                  |                  |          |                   |               | -->avd.aquasec.com/nvd/cve-2017-17740   |
-+                  +------------------+----------+                   +---------------+-----------------------------------------+
-|                  | CVE-2015-3276    | MEDIUM   |                   |               | openldap: incorrect multi-keyword       |
+| libldap-2.5-0    | CVE-2015-3276    | MEDIUM   | 2.5.13+dfsg-5     |               | openldap: incorrect multi-keyword       |
 |                  |                  |          |                   |               | mode cipherstring parsing               |
 |                  |                  |          |                   |               | -->avd.aquasec.com/nvd/cve-2015-3276    |
 +                  +------------------+          +                   +---------------+-----------------------------------------+
@@ -175,12 +110,8 @@
 |                  |                  |          |                   |               | of arbitrary files in chfn              |
 |                  |                  |          |                   |               | and chsh when compiled...               |
 |                  |                  |          |                   |               | -->avd.aquasec.com/nvd/cve-2022-0563    |
-+------------------+------------------+----------+-------------------+---------------+-----------------------------------------+
-| libssl3          | CVE-2023-0286    | HIGH     | 3.0.11-1~deb12u2  |               | X.400 address type confusion            |
-|                  |                  |          |                   |               | in X.509 GeneralName                    |
-|                  |                  |          |                   |               | -->avd.aquasec.com/nvd/cve-2023-0286    |
-+                  +------------------+----------+                   +---------------+-----------------------------------------+
-|                  | CVE-2007-6755    | MEDIUM   |                   |               | Dual_EC_DRBG: weak pseudo               |
++------------------+------------------+          +-------------------+---------------+-----------------------------------------+
+| libssl3          | CVE-2007-6755    |          | 3.0.11-1~deb12u2  |               | Dual_EC_DRBG: weak pseudo               |
 |                  |                  |          |                   |               | random number generator                 |
 |                  |                  |          |                   |               | -->avd.aquasec.com/nvd/cve-2007-6755    |
 +                  +------------------+          +                   +---------------+-----------------------------------------+
@@ -216,23 +147,7 @@
 |                  |                  |          |                   |               | and SELinux security contexts...        |
 |                  |                  |          |                   |               | -->avd.aquasec.com/nvd/cve-2013-4392    |
 +------------------+------------------+----------+-------------------+---------------+-----------------------------------------+
-| libtiff6         | CVE-2017-9117    | CRITICAL | 4.5.0-6+deb12u1   |               | libtiff: Heap-based buffer              |
-|                  |                  |          |                   |               | over-read in bmp2tiff                   |
-|                  |                  |          |                   |               | -->avd.aquasec.com/nvd/cve-2017-9117    |
-+                  +------------------+----------+                   +---------------+-----------------------------------------+
-|                  | CVE-2017-16232   | HIGH     |                   |               | libtiff: Memory leaks in                |
-|                  |                  |          |                   |               | tif_open.c, tif_lzw.c, and tif_aux.c    |
-|                  |                  |          |                   |               | -->avd.aquasec.com/nvd/cve-2017-16232   |
-+                  +------------------+          +                   +---------------+-----------------------------------------+
-|                  | CVE-2017-17973   |          |                   |               | libtiff: heap-based use after           |
-|                  |                  |          |                   |               | free in tiff2pdf.c:t2p_writeproc        |
-|                  |                  |          |                   |               | -->avd.aquasec.com/nvd/cve-2017-17973   |
-+                  +------------------+          +                   +---------------+-----------------------------------------+
-|                  | CVE-2017-5563    |          |                   |               | libtiff: Heap-buffer overflow           |
-|                  |                  |          |                   |               | in LZWEncode tif_lzw.c                  |
-|                  |                  |          |                   |               | -->avd.aquasec.com/nvd/cve-2017-5563    |
-+                  +------------------+----------+                   +---------------+-----------------------------------------+
-|                  | CVE-2014-8130    | MEDIUM   |                   |               | libtiff: divide by zero                 |
+| libtiff6         | CVE-2014-8130    | MEDIUM   | 4.5.0-6+deb12u1   |               | libtiff: divide by zero                 |
 |                  |                  |          |                   |               | in the tiffdither tool                  |
 |                  |                  |          |                   |               | -->avd.aquasec.com/nvd/cve-2014-8130    |
 +                  +------------------+          +                   +---------------+-----------------------------------------+
@@ -266,13 +181,8 @@
 | libxslt1.1       | CVE-2015-9019    | MEDIUM   | 1.1.35-1          |               | libxslt: math.random() in               |
 |                  |                  |          |                   |               | xslt uses unseeded randomness           |
 |                  |                  |          |                   |               | -->avd.aquasec.com/nvd/cve-2015-9019    |
-+------------------+------------------+----------+-------------------+---------------+-----------------------------------------+
-| login            | CVE-2019-19882   | HIGH     | 1:4.13+dfsg1-1    |               | shadow-utils: local users can           |
-|                  |                  |          |                   |               | obtain root access because setuid       |
-|                  |                  |          |                   |               | programs are misconfigured...           |
-|                  |                  |          |                   |               | -->avd.aquasec.com/nvd/cve-2019-19882   |
-+                  +------------------+----------+                   +---------------+-----------------------------------------+
-|                  | CVE-2007-5686    | MEDIUM   |                   |               | initscripts in rPath Linux 1            |
++------------------+------------------+          +-------------------+---------------+-----------------------------------------+
+| login            | CVE-2007-5686    |          | 1:4.13+dfsg1-1    |               | initscripts in rPath Linux 1            |
 |                  |                  |          |                   |               | sets insecure permissions for           |
 |                  |                  |          |                   |               | the /var/log/btmp file,...              |
 |                  |                  |          |                   |               | -->avd.aquasec.com/nvd/cve-2007-5686    |
@@ -286,21 +196,12 @@
 |                  |                  |          |                   |               | of arbitrary files in chfn              |
 |                  |                  |          |                   |               | and chsh when compiled...               |
 |                  |                  |          |                   |               | -->avd.aquasec.com/nvd/cve-2022-0563    |
-+------------------+------------------+----------+-------------------+---------------+-----------------------------------------+
-| nginx            | CVE-2013-0337    | HIGH     | 1.25.3-1~bookworm |               | The default configuration of nginx,     |
-|                  |                  |          |                   |               | possibly 1.3.13 and earlier, uses       |
-|                  |                  |          |                   |               | world-readable permissions...           |
-|                  |                  |          |                   |               | -->avd.aquasec.com/nvd/cve-2013-0337    |
-+                  +------------------+----------+                   +---------------+-----------------------------------------+
-|                  | CVE-2009-4487    | MEDIUM   |                   |               | nginx: Absent sanitation of             |
++------------------+------------------+          +-------------------+---------------+-----------------------------------------+
+| nginx            | CVE-2009-4487    |          | 1.25.3-1~bookworm |               | nginx: Absent sanitation of             |
 |                  |                  |          |                   |               | escape sequences in web server log      |
 |                  |                  |          |                   |               | -->avd.aquasec.com/nvd/cve-2009-4487    |
-+------------------+------------------+----------+-------------------+---------------+-----------------------------------------+
-| openssl          | CVE-2023-0286    | HIGH     | 3.0.11-1~deb12u2  |               | X.400 address type confusion            |
-|                  |                  |          |                   |               | in X.509 GeneralName                    |
-|                  |                  |          |                   |               | -->avd.aquasec.com/nvd/cve-2023-0286    |
-+                  +------------------+----------+                   +---------------+-----------------------------------------+
-|                  | CVE-2007-6755    | MEDIUM   |                   |               | Dual_EC_DRBG: weak pseudo               |
++------------------+------------------+          +-------------------+---------------+-----------------------------------------+
+| openssl          | CVE-2007-6755    |          | 3.0.11-1~deb12u2  |               | Dual_EC_DRBG: weak pseudo               |
 |                  |                  |          |                   |               | random number generator                 |
 |                  |                  |          |                   |               | -->avd.aquasec.com/nvd/cve-2007-6755    |
 +                  +------------------+          +                   +---------------+-----------------------------------------+
@@ -326,12 +227,7 @@
 +                  +------------------+          +                   +---------------+-----------------------------------------+
 |                  | CVE-2023-0401    |          |                   |               | -->avd.aquasec.com/nvd/cve-2023-0401    |
 +------------------+------------------+----------+-------------------+---------------+-----------------------------------------+
-| passwd           | CVE-2019-19882   | HIGH     | 1:4.13+dfsg1-1    |               | shadow-utils: local users can           |
-|                  |                  |          |                   |               | obtain root access because setuid       |
-|                  |                  |          |                   |               | programs are misconfigured...           |
-|                  |                  |          |                   |               | -->avd.aquasec.com/nvd/cve-2019-19882   |
-+                  +------------------+----------+                   +---------------+-----------------------------------------+
-|                  | CVE-2007-5686    | MEDIUM   |                   |               | initscripts in rPath Linux 1            |
+| passwd           | CVE-2007-5686    | MEDIUM   | 1:4.13+dfsg1-1    |               | initscripts in rPath Linux 1            |
 |                  |                  |          |                   |               | sets insecure permissions for           |
 |                  |                  |          |                   |               | the /var/log/btmp file,...              |
 |                  |                  |          |                   |               | -->avd.aquasec.com/nvd/cve-2007-5686    |
@@ -340,19 +236,6 @@
 |                  |                  |          |                   |               | operation was found in the              |
 |                  |                  |          |                   |               | newgrp command provided by...           |
 |                  |                  |          |                   |               | -->avd.aquasec.com/nvd/cve-2023-0634    |
-+------------------+------------------+----------+-------------------+---------------+-----------------------------------------+
-| perl-base        | CVE-2011-4116    | HIGH     | 5.36.0-7+deb12u1  |               | perl: File::Temp insecure               |
-|                  |                  |          |                   |               | temporary file handling                 |
-|                  |                  |          |                   |               | -->avd.aquasec.com/nvd/cve-2011-4116    |
-+------------------+------------------+          +-------------------+---------------+-----------------------------------------+
-| tar              | CVE-2005-2541    |          | 1.34+dfsg-1.2     |               | tar: does not properly warn the user    |
-|                  |                  |          |                   |               | when extracting setuid or setgid...     |
-|                  |                  |          |                   |               | -->avd.aquasec.com/nvd/cve-2005-2541    |
-+                  +------------------+          +                   +---------------+-----------------------------------------+
-|                  | CVE-2022-48303   |          |                   |               | tar: a heap buffer overflow             |
-|                  |                  |          |                   |               | at from_header() in list.c              |
-|                  |                  |          |                   |               | via specially crafter...                |
-|                  |                  |          |                   |               | -->avd.aquasec.com/nvd/cve-2022-48303   |
 +------------------+------------------+----------+-------------------+---------------+-----------------------------------------+
 | util-linux       | CVE-2022-0563    | MEDIUM   | 2.38.1-5          |               | util-linux: partial disclosure          |
 |                  |                  |          |                   |               | of arbitrary files in chfn              |

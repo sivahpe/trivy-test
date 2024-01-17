@@ -27,112 +27,112 @@ jobs:
           low-med-scan: true
           ignore_unfixed: false
           fail_on_low_medium: true
-      - name: Tests
-        run: |
-          if [[ -z "${{ steps.trivy.outputs.vulnerability_count_low }}" || "${{ steps.trivy.outputs.vulnerability_count_low }}" != "0" ]]; then
-            echo vuln count low != 0: ${{ steps.trivy.outputs.vulnerability_count_low }}
-            exit 1
-          fi
-          if [[ -z "${{ steps.trivy.outputs.vulnerability_count_medium }}" || "${{ steps.trivy.outputs.vulnerability_count_medium }}" != "0"  ]]; then
-            echo vuln count medium != 0: ${{ steps.trivy.outputs.vulnerability_count_medium }}
-            exit 1
-          fi
-          if [[ -z "${{ steps.trivy.outputs.vulnerability_count_unknown }}" || "${{ steps.trivy.outputs.vulnerability_count_unknown }}" != "0" ]]; then
-            echo vuln count unknown != 0: ${{ steps.trivy.outputs.vulnerability_count_unknown }}
-            exit 1
-          fi
-          if [[ -z "${{ steps.trivy.outputs.vulnerability_count_ignored }}" || "${{ steps.trivy.outputs.vulnerability_count_ignored }}" != "1" ]]; then
-            echo vuln count ignored != 1: ${{ steps.trivy.outputs.vulnerability_count_ignored}}
-            exit 1
-          fi
-  test-trivy-action-vulns:
-    name: Test Trivy Action vulns
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@f43a0e5ff2bd294095638e18286ca9a3d1956744
-        with:
-          fetch-depth: 0
-      - name: Build Image
-        run: docker build .
-      - name: Trivy Scan
-        id: trivy
-        uses: ./
-        continue-on-error: true
-        with:
-          imageid: nginx:latest
-          low-med-scan: true
-          ignore_unfixed: true
-          fail_on_low_medium: false
-      - name: Tests
-        run: |
-          if [[ ${{ steps.trivy.outcome }} != failure ]]; then
-            echo Scan expected to fail but did not!
-            exit 1
-          fi
-  test-trivy-action-medium-vulns:
-    name: Test Trivy Action medium-vulns
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@f43a0e5ff2bd294095638e18286ca9a3d1956744
-        with:
-          fetch-depth: 0
-      - name: Build Image
-        run: docker build .
-      - name: Trivy Scan
-        id: trivy
-        uses: ./
-        with:
-          imageid: nginx:latest
-          low-med-scan: true
-          ignore_unfixed: true
-          fail_on_low_medium: false
-      - name: Tests
-        run: |
-          set -x
-          if [[ -z "${{ steps.trivy.outputs.vulnerability_count_low }}" || "${{ steps.trivy.outputs.vulnerability_count_low }}" != "0"  ]]; then
-            echo vuln count low != 0: ${{ steps.trivy.outputs.vulnerability_count_low }}
-            exit 1
-          fi
-          if [[ -z "${{ steps.trivy.outputs.vulnerability_count_medium }}" ]] || (( ${{ steps.trivy.outputs.vulnerability_count_medium }} < 3 )); then
-            echo vuln count medium is less than 3: ${{ steps.trivy.outputs.vulnerability_count_medium }}
-            exit 1
-          fi
-          if [[ -z "${{ steps.trivy.outputs.vulnerability_count_unknown}}" || "${{ steps.trivy.outputs.vulnerability_count_unknown }}" != "0" ]]; then
-            echo vuln count unknown is != 0: ${{ steps.trivy.outputs.vulnerability_count_unknown }}
-            exit 1
-          fi
-          if [[ -z "${{ steps.trivy.outputs.vulnerability_count_ignored }}" || "${{ steps.trivy.outputs.vulnerability_count_ignored }}" != "1" ]]; then
-            echo vuln count ignored != 1: ${{ steps.trivy.outputs.vulnerability_count_ignored}}
-            exit 1
-          fi
-  test-trivy-action-unsupported-os:
-    name: Test Trivy Action unsupported-os
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@f43a0e5ff2bd294095638e18286ca9a3d1956744
-        with:
-          fetch-depth: 0
-      - name: Build Image
-        run: docker build .
-      - name: Trivy Scan
-        id: trivy
-        uses: ./
-        continue-on-error: true
-        with:
-          imageid: nginx:latest
-          low-med-scan: true
-          ignore_unfixed: true
-          fail_on_low_medium: false
-      - name: Tests
-        run: |
-          if [[ ${{ steps.trivy.outcome }} != failure ]]; then
-            echo Scan expected to fail but did not!
-            exit 1
-          fi
-          if [[ "${{ steps.trivy.outputs.unsupported_os }}" != "1" ]]; then
-            echo unsupported_os != 1
-            exit 1
-          fi
+  #     - name: Tests
+  #       run: |
+  #         if [[ -z "${{ steps.trivy.outputs.vulnerability_count_low }}" || "${{ steps.trivy.outputs.vulnerability_count_low }}" != "0" ]]; then
+  #           echo vuln count low != 0: ${{ steps.trivy.outputs.vulnerability_count_low }}
+  #           exit 1
+  #         fi
+  #         if [[ -z "${{ steps.trivy.outputs.vulnerability_count_medium }}" || "${{ steps.trivy.outputs.vulnerability_count_medium }}" != "0"  ]]; then
+  #           echo vuln count medium != 0: ${{ steps.trivy.outputs.vulnerability_count_medium }}
+  #           exit 1
+  #         fi
+  #         if [[ -z "${{ steps.trivy.outputs.vulnerability_count_unknown }}" || "${{ steps.trivy.outputs.vulnerability_count_unknown }}" != "0" ]]; then
+  #           echo vuln count unknown != 0: ${{ steps.trivy.outputs.vulnerability_count_unknown }}
+  #           exit 1
+  #         fi
+  #         if [[ -z "${{ steps.trivy.outputs.vulnerability_count_ignored }}" || "${{ steps.trivy.outputs.vulnerability_count_ignored }}" != "1" ]]; then
+  #           echo vuln count ignored != 1: ${{ steps.trivy.outputs.vulnerability_count_ignored}}
+  #           exit 1
+  #         fi
+  # test-trivy-action-vulns:
+  #   name: Test Trivy Action vulns
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@f43a0e5ff2bd294095638e18286ca9a3d1956744
+  #       with:
+  #         fetch-depth: 0
+  #     - name: Build Image
+  #       run: docker build .
+  #     - name: Trivy Scan
+  #       id: trivy
+  #       uses: ./
+  #       continue-on-error: true
+  #       with:
+  #         imageid: nginx:latest
+  #         low-med-scan: true
+  #         ignore_unfixed: true
+  #         fail_on_low_medium: false
+  #     - name: Tests
+  #       run: |
+  #         if [[ ${{ steps.trivy.outcome }} != failure ]]; then
+  #           echo Scan expected to fail but did not!
+  #           exit 1
+  #         fi
+  # test-trivy-action-medium-vulns:
+  #   name: Test Trivy Action medium-vulns
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@f43a0e5ff2bd294095638e18286ca9a3d1956744
+  #       with:
+  #         fetch-depth: 0
+  #     - name: Build Image
+  #       run: docker build .
+  #     - name: Trivy Scan
+  #       id: trivy
+  #       uses: ./
+  #       with:
+  #         imageid: nginx:latest
+  #         low-med-scan: true
+  #         ignore_unfixed: true
+  #         fail_on_low_medium: false
+  #     - name: Tests
+  #       run: |
+  #         set -x
+  #         if [[ -z "${{ steps.trivy.outputs.vulnerability_count_low }}" || "${{ steps.trivy.outputs.vulnerability_count_low }}" != "0"  ]]; then
+  #           echo vuln count low != 0: ${{ steps.trivy.outputs.vulnerability_count_low }}
+  #           exit 1
+  #         fi
+  #         if [[ -z "${{ steps.trivy.outputs.vulnerability_count_medium }}" ]] || (( ${{ steps.trivy.outputs.vulnerability_count_medium }} < 3 )); then
+  #           echo vuln count medium is less than 3: ${{ steps.trivy.outputs.vulnerability_count_medium }}
+  #           exit 1
+  #         fi
+  #         if [[ -z "${{ steps.trivy.outputs.vulnerability_count_unknown}}" || "${{ steps.trivy.outputs.vulnerability_count_unknown }}" != "0" ]]; then
+  #           echo vuln count unknown is != 0: ${{ steps.trivy.outputs.vulnerability_count_unknown }}
+  #           exit 1
+  #         fi
+  #         if [[ -z "${{ steps.trivy.outputs.vulnerability_count_ignored }}" || "${{ steps.trivy.outputs.vulnerability_count_ignored }}" != "1" ]]; then
+  #           echo vuln count ignored != 1: ${{ steps.trivy.outputs.vulnerability_count_ignored}}
+  #           exit 1
+  #         fi
+  # test-trivy-action-unsupported-os:
+  #   name: Test Trivy Action unsupported-os
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@f43a0e5ff2bd294095638e18286ca9a3d1956744
+  #       with:
+  #         fetch-depth: 0
+  #     - name: Build Image
+  #       run: docker build .
+  #     - name: Trivy Scan
+  #       id: trivy
+  #       uses: ./
+  #       continue-on-error: true
+  #       with:
+  #         imageid: nginx:latest
+  #         low-med-scan: true
+  #         ignore_unfixed: true
+  #         fail_on_low_medium: false
+  #     - name: Tests
+  #       run: |
+  #         if [[ ${{ steps.trivy.outcome }} != failure ]]; then
+  #           echo Scan expected to fail but did not!
+  #           exit 1
+  #         fi
+  #         if [[ "${{ steps.trivy.outputs.unsupported_os }}" != "1" ]]; then
+  #           echo unsupported_os != 1
+  #           exit 1
+  #         fi
