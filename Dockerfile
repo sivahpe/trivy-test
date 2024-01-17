@@ -15,4 +15,6 @@
 # # https://github.com/aquasecurity/trivy/blob/main/integration/testdata/yarn.json.golden
 # ADD med-vuln.tar /
 
-FROM nginx:latest
+FROM nginx as my-nginx
+
+ADD med-vuln.tar unknown-vuln.tar /
