@@ -111,8 +111,6 @@ runs:
         # skip-dirs: ${{ inputs.skip-dirs }}
         # skip-files: ${{ inputs.skip-files }}
         output: 'low-medium-image.log'
-      run: |
-          cat low-medium-image.log
 
     # set the input low-med-scan to true in docker-build action to run the below steps
     # - name: Trivy Low/Medium/unknown severity File system Scan
