@@ -102,7 +102,7 @@ runs:
       with:
         image-ref: ubuntu:noble-20240114
         scan-type: 'image'
-        ignore-unfixed: true
+        ignore-unfixed: false
         exit-code: '1'
         severity: 'UNKNOWN,LOW,MEDIUM'
         format: 'table'
