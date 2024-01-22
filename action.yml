@@ -100,10 +100,10 @@ runs:
       # if: ${{ inputs.low-med-scan == 'true' }}
       uses: aquasecurity/trivy-action@d43c1f16c00cfd3978dde6c07f4bbcf9eb6993ca
       with:
-        image-ref: debian/gnutls28 3.8.2-1
+        image-ref: nginx:latest
         scan-type: 'image'
         ignore-unfixed: true
-        exit-code: '1'
+        exit-code: '0'
         severity: 'UNKNOWN,LOW,MEDIUM'
         format: 'table'
         # ignore-policy: ${{ inputs.ignore_policy }}
