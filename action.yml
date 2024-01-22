@@ -87,7 +87,7 @@ runs:
       with:
         image-ref: nginx:latest
         scan-type: 'image'
-        ignore-unfixed: true
+        ignore-unfixed: false
         exit-code: '1'
         severity: 'CRITICAL,HIGH'
         format: 'table'
@@ -102,8 +102,8 @@ runs:
       with:
         image-ref: nginx:latest
         scan-type: 'image'
-        ignore-unfixed: true
-        exit-code: '0'
+        ignore-unfixed: false
+        exit-code: '1'
         severity: 'UNKNOWN,LOW,MEDIUM'
         format: 'table'
         # ignore-policy: ${{ inputs.ignore_policy }}
