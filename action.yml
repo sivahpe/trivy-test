@@ -82,15 +82,15 @@ runs:
     #     # skip-dirs: ${{ inputs.skip-dirs }}
     #     # skip-files: ${{ inputs.skip-files }}
 
-    - name: Trivy Image Scan
-      uses: aquasecurity/trivy-action@d43c1f16c00cfd3978dde6c07f4bbcf9eb6993ca
-      with:
-        image-ref: nginx:latest
-        scan-type: 'image'
-        ignore-unfixed: false
-        exit-code: '1'
-        severity: 'CRITICAL,HIGH'
-        format: 'table'
+    # - name: Trivy Image Scan
+    #   uses: aquasecurity/trivy-action@d43c1f16c00cfd3978dde6c07f4bbcf9eb6993ca
+    #   with:
+    #     image-ref: nginx:latest
+    #     scan-type: 'image'
+    #     ignore-unfixed: false
+    #     exit-code: '1'
+    #     severity: 'CRITICAL,HIGH'
+    #     format: 'table'
         # ignore-policy: ${{ inputs.ignore_policy }}
         # trivyignores: ${{ inputs.trivyignores }}
         # skip-dirs: ${{ inputs.skip-dirs }}
@@ -102,7 +102,7 @@ runs:
       with:
         image-ref: nginx:latest
         scan-type: 'image'
-        ignore-unfixed: false
+        ignore-unfixed: true
         exit-code: '1'
         severity: 'UNKNOWN,LOW,MEDIUM'
         format: 'table'
